@@ -11,6 +11,5 @@ locals {
     environment_name = "dev"
     environment_type = "nonprod"
     owner_email = "amit.894@gmail.com"
-    team_rosters_product_id = 2227
   }
 }

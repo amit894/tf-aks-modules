@@ -10,7 +10,7 @@ variable "region" {
 
 variable "storage_account_name" {
   description = "Prefix to be used for resources to will be created"
-  default = "testapptfstate"
+  default = "testappaks894"
 }
 
 variable "storage_account_tier" {
@@ -21,4 +21,9 @@ variable "storage_account_tier" {
 variable "storage_account_sku" {
   description = "Prefix to be used for resources to will be created"
   default = "RAGRS"
+}
+
+variable "storage_container_name" {
+  description = "Container Name to be used"
+  default = "tf-states"
 }

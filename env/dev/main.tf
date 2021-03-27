@@ -1,6 +1,7 @@
 module networking {
   source  = "../../modules/networking"
   region = local.region
+  vnet_cidr = local.vnet_cidr
   internal_subnet_cidr = local.internal_subnet_cidr
   prefix = var.prefix
   tags = local.tags

@@ -17,7 +17,7 @@ resource "azurerm_resource_group" "rg" {
 }
 
 
-resource "azurerm_storage_account" "storage_account" {
+resource "azurerm_storage_account" "str_acc" {
   name                     = "${var.storage_account_name}"
   resource_group_name      = azurerm_resource_group.rg.name
   location                 = azurerm_resource_group.rg.location
@@ -27,4 +27,10 @@ resource "azurerm_storage_account" "storage_account" {
   tags = {
     environment = "staging"
   }
+}
+
+resource "azurerm_storage_container" "str_cont" {
+  name                  = "${var.storage_container_name}"
+  storage_account_name  = azurerm_storage_account.str_acc.name
+  container_access_type = "private"
 }
