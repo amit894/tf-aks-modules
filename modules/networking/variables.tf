@@ -19,17 +19,7 @@ variable "internal_subnet_cidr" {
   default = ["10.0.0.0/24"]
 }
 
-variable "api_server_authorized_ip_ranges" {
-  description = "CIDR block of the Corporate CIDR"
-  default = ["201.17.87.61/32"]
-}
-
-variable "default_node_pool_vm_size" {
-  description = "Default Node Pool VM Size"
-  default = "Standard_D2_v2"
-}
-
-variable "user_node_pool_vm_size" {
-  description = "User Node Pool VM Size"
-  default = "Standard_D2_v2"
+variable "tags" {
+  description = "Tags for the resource"
+  default = ""
 }

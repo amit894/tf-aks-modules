@@ -14,23 +14,7 @@ provider "azurerm" {
 resource "azurerm_resource_group" "rg" {
   name     = "${var.prefix}-aks-rg"
   location = "${var.region}"
-}
-
-resource "azurerm_virtual_network" "aks_vnet" {
-  name                = "${var.prefix}-vnet"
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
-  address_space       = "${var.vnet_cidr}"
-}
-
-resource "azurerm_subnet" "internal_subnet" {
-  name                 = "${var.prefix}-internal-subnet"
-  virtual_network_name = azurerm_virtual_network.aks_vnet.name
-  resource_group_name  = azurerm_resource_group.rg.name
-  address_prefixes     = "${var.internal_subnet_cidr}"
-  enforce_private_link_endpoint_network_policies = true
-  enforce_private_link_service_network_policies = true
-
+  tags     = "${var.tags}"
 }
 
 resource "azurerm_kubernetes_cluster" "aks" {
@@ -41,28 +25,25 @@ resource "azurerm_kubernetes_cluster" "aks" {
 
   default_node_pool {
     name           = "system"
-    node_count     = 1
+    node_count     = "${var.default_node_pool_node_count}"
     vm_size        = "${var.default_node_pool_vm_size}"
-    vnet_subnet_id = azurerm_subnet.internal_subnet.id
+    vnet_subnet_id = "${var.internal_subnet_id}"
   }
 
   identity {
     type = "SystemAssigned"
   }
 
-  api_server_authorized_ip_ranges = ["201.17.87.61/32"]
+  api_server_authorized_ip_ranges = "${var.api_server_authorized_ip_ranges}"
 
   network_profile {
-   load_balancer_sku = "Standard"
-   network_plugin = "kubenet"
-   service_cidr = "192.168.0.0/17"
-   docker_bridge_cidr = "192.168.128.1/17"
-   dns_service_ip = "192.168.0.10"
+   load_balancer_sku = "${var.load_balancer_sku}"
+   network_plugin = "${var.network_plugin}"
+   service_cidr = "${var.service_cidr}"
+   docker_bridge_cidr = "${var.docker_bridge_cidr}"
+   dns_service_ip = "${var.dns_service_ip}"
    }
 
-   tags = {
-       Environment = "Development"
-   }
 
   addon_profile {
     aci_connector_linux {
@@ -85,12 +66,13 @@ resource "azurerm_kubernetes_cluster" "aks" {
       enabled = false
     }
   }
+
 }
 
 resource "azurerm_kubernetes_cluster_node_pool" "user" {
   name                  = "user"
   kubernetes_cluster_id = azurerm_kubernetes_cluster.aks.id
   vm_size               = "${var.user_node_pool_vm_size}"
-  node_count            = 1
-  vnet_subnet_id        = azurerm_subnet.internal_subnet.id
+  node_count            = "${var.user_node_pool_node_count}"
+  vnet_subnet_id        = "${var.internal_subnet_id}"
 }
