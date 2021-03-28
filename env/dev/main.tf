@@ -44,7 +44,7 @@ module "aks" {
   ssh_key = var.ssh_key
   admin_user = var.admin_user
   enable_role_based_access_control=var.enable_role_based_access_control
-  log_analytics_workspace_id = "${module.monitor.oms_id}"
+  log_analytics_workspace_id = module.monitor.oms_id
 
 
 }
