@@ -67,3 +67,8 @@ variable "tags" {
   description = "Tags for the resource"
   default = ""
 }
+
+variable "enable_role_based_access_control"{
+  description = "Adding a role to manage AKS Cluster"
+  default = "true"
+}

@@ -22,5 +22,6 @@ module "aks" {
   user_node_pool_vm_size = var.user_node_pool_vm_size
   user_node_pool_node_count = var.user_node_pool_node_count
   load_balancer_sku = var.load_balancer_sku
+  enable_role_based_access_control=var.enable_role_based_access_control
 
 }
