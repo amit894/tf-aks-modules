@@ -82,6 +82,7 @@ variable "log_analytics_workspace_id"{
 
 variable "ssh_key"{
   description = "SSH Key to Login to the Nodes"
+  default = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCsWmH3x3rUrKHYBG3LM9L2xI/AqqufJ0BkCVNg+N5DHfVfxAukZliwT9AN+8yYm6jsprFF8n1Vzu2o/rNvgW5994ocU2/okIOtEsoCdKq81WyLdOmKapqWR16V9w7t3b1zZ/gxSP5vPm0ZY9b2cGgZH3h2UOdbGwBw0UFIOt10ZtFohOXugYSA7BoiwFGxVbhZ2Iav1zYDUa6aCbWJ4aBQHCXbXzKXY8Y+/1WU6zvBGkANxrd310NcanEQVe1yKWX1EilEVQPAuNz0UdrC6kbVEk36Wpo6tZhnW1ueYywWX2QZRf7+cW3SVIuE0myqpx34GD5sILN3HCL7kMhbgPvJ amit.894@gmail.com"
 }
 
 variable "admin_user"{

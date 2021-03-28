@@ -48,7 +48,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
     admin_username = var.admin_user
 
     ssh_key {
-      key_data = replace(var.ssh_key, "\n", "")
+     key_data = var.ssh_key
     }
   }
 

@@ -41,11 +41,9 @@ module "aks" {
   user_node_pool_vm_size = var.user_node_pool_vm_size
   user_node_pool_node_count = var.user_node_pool_node_count
   load_balancer_sku = var.load_balancer_sku
-  ssh_key = var.ssh_key
   admin_user = var.admin_user
   enable_role_based_access_control=var.enable_role_based_access_control
   log_analytics_workspace_id = module.monitor.oms_id
-
 
 }
 
@@ -53,8 +51,6 @@ module "roles" {
   source  = "../../modules/roles"
   container_registry_id = module.acr.container_registry_id
   vnet_subnet_id = module.networking.aks_subnet_id
-  cluster_id = module.aks.cluster_id
-  oms_principal_id = module.aks.oms_principal_id
   principal_id = "module.aks.principal_id}"
   kubelet_object_id = module.aks.kubelet_object_id
 }

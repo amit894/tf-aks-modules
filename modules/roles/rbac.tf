@@ -11,11 +11,6 @@ provider "azurerm" {
   features {}
 }
 
-resource "azurerm_role_assignment" "aks" {
-  scope                = var.cluster_id
-  role_definition_name = "Monitoring Metrics Publisher"
-  principal_id         = var.oms_principal_id
-}
 
 resource "azurerm_role_assignment" "aks_subnet" {
   scope                = var.vnet_subnet_id

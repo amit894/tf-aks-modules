@@ -44,7 +44,6 @@ module "aks_private" {
   user_node_pool_cluster_auto_scaling_min_count = var.user_node_pool_cluster_auto_scaling_min_count
   default_node_pool_cluster_auto_scaling_min_count = var.default_node_pool_cluster_auto_scaling_min_count
   default_node_pool_cluster_auto_scaling_max_count = var.default_node_pool_cluster_auto_scaling_max_count
-  ssh_key = var.ssh_key
   admin_user = var.admin_user
   aad_admin_group_object_ids = var.aad_admin_group_object_ids
   enable_role_based_access_control=var.enable_role_based_access_control
@@ -58,8 +57,6 @@ module "roles" {
   source  = "../../modules/roles"
   container_registry_id = module.acr.container_registry_id
   vnet_subnet_id = module.networking.aks_subnet_id
-  cluster_id = module.aks_private.cluster_id
-  oms_principal_id = module.aks_private.oms_principal_id
   principal_id = module.aks_private.principal_id
   kubelet_object_id = module.aks_private.kubelet_object_id
 }
