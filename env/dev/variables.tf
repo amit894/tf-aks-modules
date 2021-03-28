@@ -28,3 +28,7 @@ variable "ssh_key"{
 
 variable "admin_user"{
 }
+
+variable "enable_gateway"{
+ default = false
+}

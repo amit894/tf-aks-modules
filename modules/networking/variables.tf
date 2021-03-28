@@ -14,9 +14,19 @@ variable "vnet_cidr" {
 
 }
 
-variable "internal_subnet_cidr" {
-  description = "CIDR of the internal subnet for hosting"
+variable "aks_subnet_cidr" {
+  description = "CIDR of the aks subnet for hosting"
   default = ["10.0.0.0/24"]
+}
+
+variable "gateway_subnet_cidr" {
+  description = "CIDR of the gateway subnet for hosting"
+  default = ["10.0.0.0/24"]
+}
+
+variable "enable_gateway" {
+  description = "Flag to add the gateway subnet"
+  default = false
 }
 
 variable "tags" {

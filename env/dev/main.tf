@@ -2,9 +2,11 @@ module "networking" {
   source  = "../../modules/networking"
   region = local.region
   vnet_cidr = local.vnet_cidr
-  internal_subnet_cidr = local.internal_subnet_cidr
+  aks_subnet_cidr = local.aks_subnet_cidr
+  gateway_subnet_cidr = local.gateway_subnet_cidr
   prefix = var.prefix
   tags = local.tags
+  enable_gateway = var.enable_gateway
 
 }
 
@@ -30,7 +32,7 @@ module "aks" {
   docker_bridge_cidr = local.docker_bridge_cidr
   dns_service_ip = local.dns_service_ip
   network_plugin = local.network_plugin
-  internal_subnet_id = "${module.networking.internal_subnet_id}"
+  internal_subnet_id = module.networking.aks_subnet_id
   tags = local.tags
   prefix = var.prefix
   api_server_authorized_ip_ranges = var.api_server_authorized_ip_ranges
@@ -49,10 +51,10 @@ module "aks" {
 
 module "roles" {
   source  = "../../modules/roles"
-  container_registry_id = "${module.acr.container_registry_id}"
-  vnet_subnet_id = "${module.networking.internal_subnet_id}"
-  cluster_id = "${module.aks.cluster_id}"
-  oms_principal_id = "${module.aks.oms_principal_id}"
-  principal_id = "${module.aks.principal_id}"
-  kubelet_object_id = "${module.aks.kubelet_object_id}"
+  container_registry_id = module.acr.container_registry_id
+  vnet_subnet_id = module.networking.aks_subnet_id
+  cluster_id = module.aks.cluster_id
+  oms_principal_id = module.aks.oms_principal_id
+  principal_id = "module.aks.principal_id}"
+  kubelet_object_id = module.aks.kubelet_object_id
 }

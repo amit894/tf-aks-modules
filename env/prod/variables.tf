@@ -36,3 +36,10 @@ variable "ssh_key"{
 
 variable "admin_user"{
 }
+
+variable "aad_admin_group_object_ids"{
+}
+
+variable "enable_gateway"{
+ default = true
+}

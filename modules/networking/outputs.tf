@@ -1,3 +1,3 @@
-output "internal_subnet_id" {
-  value = azurerm_subnet.internal_subnet.id
+output "aks_subnet_id" {
+  value = azurerm_subnet.aks.id
 }
