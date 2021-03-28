@@ -1,4 +1,4 @@
-module networking {
+module "networking" {
   source  = "../../modules/networking"
   region = local.region
   vnet_cidr = local.vnet_cidr
@@ -7,6 +7,15 @@ module networking {
   tags = local.tags
 
 }
+
+module "acr" {
+  source  = "../../modules/acr"
+  region = local.region
+  prefix = var.prefix
+  tags = local.tags
+
+}
+
 module "aks" {
   source  = "../../modules/aks"
   region = local.region
@@ -23,5 +32,14 @@ module "aks" {
   user_node_pool_node_count = var.user_node_pool_node_count
   load_balancer_sku = var.load_balancer_sku
   enable_role_based_access_control=var.enable_role_based_access_control
+}
 
+module "roles" {
+  source  = "../../modules/roles"
+  container_registry_id = var.container_registry_id
+  vnet_subnet_id = "${module.networking.internal_subnet_id}"
+  cluster_id = "${module.aks.cluster_id}"
+  oms_principal_id = "${module.aks.oms_principal_id}"
+  principal_id = "${module.aks.principal_id}"
+  kubelet_object_id = "${module.acr.azurerm_container_registry.acr.id}"
 }

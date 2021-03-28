@@ -19,3 +19,6 @@ variable "user_node_pool_node_count" {
 
 variable "load_balancer_sku" {
 }
+
+variable "enable_role_based_access_control"{
+}

@@ -44,9 +44,10 @@ resource "azurerm_kubernetes_cluster" "aks" {
    dns_service_ip = "${var.dns_service_ip}"
    }
 
-   role_based_access_control {
+  role_based_access_control {
     enabled = var.enable_role_based_access_control
     }
+
 
   addon_profile {
     aci_connector_linux {
