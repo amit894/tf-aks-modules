@@ -21,5 +21,8 @@ variable "internal_subnet_cidr" {
 
 variable "tags" {
   description = "Tags for the resource"
-  default = ""
+  default = {
+    environment_name = "dev"
+    owner_email = "amit.894@gmail.com"
+    }
 }

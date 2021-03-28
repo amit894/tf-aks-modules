@@ -13,8 +13,8 @@ provider "azurerm" {
 
 resource "azurerm_resource_group" "rg" {
   name     = "${var.prefix}-monitor-rg"
-  location = "${var.region}"
-  tags     = "${var.tags}"
+  location = var.region
+  tags     = var.tags
 }
 
 resource "azurerm_log_analytics_workspace" "oms" {

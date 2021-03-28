@@ -65,8 +65,11 @@ variable "internal_subnet_id" {
 
 variable "tags" {
   description = "Tags for the resource"
-  default = ""
-}
+  default = {
+    environment_name = "dev"
+    owner_email = "amit.894@gmail.com"
+    }
+  }
 
 variable "enable_role_based_access_control"{
   description = "Adding a role to manage AKS Cluster"

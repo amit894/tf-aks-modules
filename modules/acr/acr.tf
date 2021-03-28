@@ -13,8 +13,8 @@ provider "azurerm" {
 
 resource "azurerm_resource_group" "rg" {
   name     = "${var.prefix}-acr-rg"
-  location = "${var.region}"
-  tags     = "${var.tags}"
+  location = var.region
+  tags     = var.tags
 }
 
 resource "azurerm_container_registry" "acr" {

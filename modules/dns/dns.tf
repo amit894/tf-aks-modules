@@ -13,6 +13,6 @@ provider "azurerm" {
 
 resource "azurerm_resource_group" "rg" {
   name     = "${var.prefix}-dns-rg"
-  location = "${var.region}"
-  tags     = "${var.tags}"
+  location = var.region
+  tags     = var.tags
 }

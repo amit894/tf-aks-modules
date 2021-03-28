@@ -10,5 +10,8 @@ variable "region" {
 
 variable "tags" {
   description = "Tags for the resource"
-  default = ""
+  default = {
+    environment_name = "dev"
+    owner_email = "amit.894@gmail.com"
+    }
 }

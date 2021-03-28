@@ -99,3 +99,7 @@ variable "ssh_key"{
 variable "admin_user"{
   description = "Admin User for the Nodes"
 }
+
+variable "aad_admin_group_object_ids"{
+  description = "Admin User for the Nodes"
+}
