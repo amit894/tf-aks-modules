@@ -44,6 +44,14 @@ resource "azurerm_kubernetes_cluster" "aks" {
    dns_service_ip = "${var.dns_service_ip}"
    }
 
+   linux_profile {
+    admin_username = var.admin_user
+
+    ssh_key {
+      key_data = replace(var.ssh_key, "\n", "")
+    }
+  }
+
   role_based_access_control {
     enabled = var.enable_role_based_access_control
     }

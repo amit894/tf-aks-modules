@@ -76,3 +76,11 @@ variable "enable_role_based_access_control"{
 variable "log_analytics_workspace_id"{
   description = "Log Analytics Workspace ID"
 }
+
+variable "ssh_key"{
+  description = "SSH Key to Login to the Nodes"
+}
+
+variable "admin_user"{
+  description = "Admin User for the Nodes"
+}
