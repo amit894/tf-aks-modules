@@ -30,6 +30,10 @@ resource "azurerm_kubernetes_cluster" "aks" {
     node_count     = "${var.default_node_pool_node_count}"
     vm_size        = "${var.default_node_pool_vm_size}"
     vnet_subnet_id = "${var.internal_subnet_id}"
+    enable_auto_scaling   = true
+    min_count             = "${var.default_node_pool_cluster_auto_scaling_min_count}"
+    max_count             = "${var.default_node_pool_cluster_auto_scaling_max_count}"
+    enable_node_public_ip = false
   }
 
   identity {
@@ -89,4 +93,8 @@ resource "azurerm_kubernetes_cluster_node_pool" "user" {
   vm_size               = "${var.user_node_pool_vm_size}"
   node_count            = "${var.user_node_pool_node_count}"
   vnet_subnet_id        = "${var.internal_subnet_id}"
+  enable_auto_scaling   = true
+  min_count             = "${var.user_node_pool_cluster_auto_scaling_min_count}"
+  max_count             = "${var.user_node_pool_cluster_auto_scaling_max_count}"
+  enable_node_public_ip = false
 }

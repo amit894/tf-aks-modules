@@ -7,10 +7,22 @@ variable "default_node_pool_vm_size" {
 variable "default_node_pool_node_count" {
 }
 
+variable "default_node_pool_cluster_auto_scaling_max_count" {
+}
+
+variable "default_node_pool_cluster_auto_scaling_min_count" {
+}
+
 variable "user_node_pool_vm_size" {
 }
 
 variable "user_node_pool_node_count" {
+}
+
+variable "user_node_pool_cluster_auto_scaling_max_count" {
+}
+
+variable "user_node_pool_cluster_auto_scaling_min_count" {
 }
 
 variable "load_balancer_sku" {

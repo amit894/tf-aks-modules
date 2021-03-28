@@ -38,10 +38,15 @@ module "aks_private" {
   user_node_pool_vm_size = var.user_node_pool_vm_size
   user_node_pool_node_count = var.user_node_pool_node_count
   load_balancer_sku = var.load_balancer_sku
+  user_node_pool_cluster_auto_scaling_max_count = var.user_node_pool_cluster_auto_scaling_max_count
+  user_node_pool_cluster_auto_scaling_min_count = var.user_node_pool_cluster_auto_scaling_min_count
+  default_node_pool_cluster_auto_scaling_min_count = var.default_node_pool_cluster_auto_scaling_min_count
+  default_node_pool_cluster_auto_scaling_max_count = var.default_node_pool_cluster_auto_scaling_max_count
   ssh_key = var.ssh_key
   admin_user = var.admin_user
   enable_role_based_access_control=var.enable_role_based_access_control
   log_analytics_workspace_id = "${module.monitor.oms_id}"
+
 
 
 }

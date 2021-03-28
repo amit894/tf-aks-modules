@@ -33,12 +33,32 @@ variable "default_node_pool_node_count" {
   default = 1
 }
 
+variable "default_node_pool_cluster_auto_scaling_min_count" {
+  description = "User Pool Node Count"
+  default = 1
+}
+
+variable "default_node_pool_cluster_auto_scaling_max_count" {
+  description = "User Pool Node Count"
+  default = 1
+}
+
 variable "user_node_pool_vm_size" {
   description = "User Node Pool VM Size"
   default = "Standard_D2_v2"
 }
 
 variable "user_node_pool_node_count" {
+  description = "User Pool Node Count"
+  default = 1
+}
+
+variable "user_node_pool_cluster_auto_scaling_min_count" {
+  description = "User Pool Node Count"
+  default = 1
+}
+
+variable "user_node_pool_cluster_auto_scaling_max_count" {
   description = "User Pool Node Count"
   default = 1
 }
