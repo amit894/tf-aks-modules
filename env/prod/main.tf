@@ -49,14 +49,4 @@ module "aks_private" {
   enable_role_based_access_control=var.enable_role_based_access_control
   log_analytics_workspace_id = module.monitor.oms_id
 
-
-
-}
-
-module "roles" {
-  source  = "../../modules/roles"
-  container_registry_id = module.acr.container_registry_id
-  vnet_subnet_id = module.networking.aks_subnet_id
-  principal_id = module.aks_private.principal_id
-  kubelet_object_id = module.aks_private.kubelet_object_id
 }
