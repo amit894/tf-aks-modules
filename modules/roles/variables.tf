@@ -3,7 +3,7 @@ variable "vnet_subnet_id" {
 }
 
 variable "principal_id" {
-  description = "CIDR of the VNET for hosting"
+  description = "AKS Cluster identity's Principal ID"
 }
 
 variable "container_registry_id" {
@@ -11,5 +11,5 @@ variable "container_registry_id" {
 }
 
 variable "kubelet_object_id" {
-  description = ""
+  description = "Object Id for the Kubelet for the AKS Cluster"
 }
