@@ -43,17 +43,17 @@ Create the Storage Account for Terraform Remote Backend
 
 Initialize the terraform
 
-- ``` terraform init  env/dev/ ```
+- ``` terraform init  env/{env}/ ```
 
 Run Terraform Plan
 
-- ``` terraform plan  env/dev/ ```
+- ``` terraform plan  env/{env}/ ```
 
 Apply the Terraform Plan
 
-- ``` terraform apply  env/dev/ ```
+- ``` terraform apply  env/{env}/ ```
 
-Variables need to be configured in variables.tf file or can be entered at the terraform cli.
+Variables need to be configured in variables.tf file or can be entered at the terraform cli. Also, {env} -> Dev, Prod
 
 ## Terraform Dev Environment Variables
 
