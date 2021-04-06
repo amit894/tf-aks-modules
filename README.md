@@ -6,9 +6,11 @@ Terraform Modules to create Sample AKS Cluster
 
 Download terraform binary
 
-*[Mac] (https://releases.hashicorp.com/terraform/0.14.9/terraform_0.14.9_darwin_amd64.zip)
-*[Linux 64 bit] (https://releases.hashicorp.com/terraform/0.14.9/terraform_0.14.9_linux_amd64.zip)
-*[Windows 64 bit] (https://releases.hashicorp.com/terraform/0.14.9/terraform_0.14.9_windows_amd64.zip)
+[Mac](https://releases.hashicorp.com/terraform/0.14.9/terraform_0.14.9_darwin_amd64.zip)
+
+[Linux 64 bit](https://releases.hashicorp.com/terraform/0.14.9/terraform_0.14.9_linux_amd64.zip)
+
+[Windows 64 bit](https://releases.hashicorp.com/terraform/0.14.9/terraform_0.14.9_windows_amd64.zip)
 
 
 ## Prerequisites
@@ -41,17 +43,17 @@ Create the Storage Account for Terraform Remote Backend
 
 Initialize the terraform
 
-- ``` terraform init  env/dev/ ```
+- ``` terraform init  env/{env}/ ```
 
 Run Terraform Plan
 
-- ``` terraform plan  env/dev/ ```
+- ``` terraform plan  env/{env}/ ```
 
 Apply the Terraform Plan
 
-- ``` terraform apply  env/dev/ ```
+- ``` terraform apply  env/{env}/ ```
 
-Variables need to be configured in variables.tf file or can be entered at the terraform cli.
+Variables need to be configured in variables.tf file or can be entered at the terraform cli. Also, {env} -> Dev, Prod
 
 ## Terraform Dev Environment Variables
 
